@@ -38,7 +38,7 @@ CMAKE_OPTIONS+= -DBUILD_DEMO:BOOL=OFF -DCMAKE_INSTALL_PREFIX:PATH=$(PKG_BUILD_DI
 CMAKE_SOURCE_SUBDIR=rtloader
 
 define Build/Configure
-	$(call Build/Configure/Default)
+	$(cd rtloader && call Build/Configure/Default)
 	$(call GoPackage/Build/Configure)
 endef
 
