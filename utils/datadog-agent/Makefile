@@ -21,6 +21,9 @@ PKG_BUILD_DEPENDS:=golang/host python3/host
 PKG_BUILD_PARALLEL:=1
 PKG_USE_MIPS16:=0
 
+PKG_USE_NINJA=0
+HOST_USE_NINJA=0
+
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
 include ../../lang/golang/golang-package.mk
@@ -35,7 +38,6 @@ define Package/datadog-agent
 endef
 
 CMAKE_OPTIONS+= -DBUILD_DEMO:BOOL=OFF -DCMAKE_INSTALL_PREFIX:PATH=$(PKG_BUILD_DIR)/dev -DDISABLE_PYTHON2:BOOL=ON  -DDISABLE_PYTHON3:BOOL=OFF
-CMAKE_SOURCE_SUBDIR=rtloader
 
 define Build/Configure
 	$(cd rtloader && call Build/Configure/Default)
